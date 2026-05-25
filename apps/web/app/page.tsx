@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 import { useMutation, useQuery } from 'convex/react'
-import { api } from '@/convex/_generated/api'
 import SignOutButton from '@/components/SignOutButton'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Circle, CircleCheck, Trash2 } from 'lucide-react'
-import type { Id } from '@/convex/_generated/dataModel'
+import { api, type Id } from '@repo/convex'
 
 export default function Home() {
   const todos = useQuery(api.todos.list)
@@ -24,8 +23,15 @@ export default function Home() {
   const [editingId, setEditingId] = useState<null | string>(null)
   const [editTitle, setEditTitle] = useState('')
 
-  function hasImageUrl(t: unknown): t is { imageUrl: string } {
-    return typeof t === 'object' && t !== null && 'imageUrl' in t && Boolean((t as any).imageUrl)
+  function hasImageUrl<T extends { _id: Id<'todos'> }>(
+    t: T | null | undefined,
+  ): t is T & { imageUrl: string } {
+    return (
+      typeof t === 'object' &&
+      t !== null &&
+      'imageUrl' in t &&
+      Boolean((t as { imageUrl?: string }).imageUrl)
+    )
   }
 
   async function handleAdd(e: React.FormEvent) {

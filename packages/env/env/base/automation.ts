@@ -4,7 +4,7 @@ import { z } from 'zod'
 export const automationEnv = createEnv({
   server: {
     PLAYWRIGHT_BASE_URL: z.url().optional().default('http://localhost:3000'),
-    VERCEL_AUTOMATION_BYPASS_SECRET: z.string().optional(), //TODO: make required in CI
+    VERCEL_AUTOMATION_BYPASS_SECRET: z.string().optional(),
     CI: z.coerce.boolean().optional().default(false),
   },
   client: {},

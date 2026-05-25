@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -12,6 +13,9 @@
 
 # testing
 /coverage
+**/.next/
+**/node_modules/
+.turbo/
 
 # next.js
 /.next/
@@ -45,8 +49,11 @@ next-env.d.ts
 test-results/
 playwright-report/
 playwright/.cache/
-tests/e2e/.auth/
+apps/e2e/tests/e2e/.auth/
 
 # agents
 .agents/
 convexApi*.ts
+
+# monorepo safety: ignore accidental root-level Convex output
+/convex/

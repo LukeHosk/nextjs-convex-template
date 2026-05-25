@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Verifies that Convex file storage works with the local backend.
- * Run with: node scripts/test-storage.mjs
+ * Run with: node test-storage.mjs
  *
  * Prerequisites:
  *   1. `convex dev` is running (local backend)
@@ -58,7 +58,7 @@ async function main() {
 
   // 2. Upload a small text file to that URL
   process.stdout.write('2/5  Uploading test file ... ')
-  const testContent = `clothes-tool storage test\ntimestamp: ${new Date().toISOString()}`
+  const testContent = `nextjs-convex-template storage test\ntimestamp: ${new Date().toISOString()}`
   const uploadRes = await fetch(uploadUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain' },

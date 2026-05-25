@@ -8,14 +8,20 @@
 import fs from 'fs'
 import { config as loadEnvFile } from 'dotenv'
 import { spawnSync } from 'child_process'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-if (!fs.existsSync('.env.local')) {
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const rootDir = resolve(__dirname, '..', '..')
+const envPath = resolve(rootDir, '.env.local')
+
+if (!fs.existsSync(envPath)) {
   // Something is off, skip the script.
   process.exit(0)
 }
 
 const config = {}
-loadEnvFile({ path: '.env.local', processEnv: config, quiet: true })
+loadEnvFile({ path: envPath, processEnv: config, quiet: true })
 
 const runOnceWorkflow = process.argv.includes('--once')
 
@@ -26,10 +32,11 @@ if (runOnceWorkflow && config.SETUP_SCRIPT_RAN !== undefined) {
 
 const result = spawnSync('npx', ['@convex-dev/auth', '--skip-git-check'], {
   stdio: 'inherit',
+  cwd: rootDir,
 })
 
 if (runOnceWorkflow) {
-  fs.writeFileSync('.env.local', `\nSETUP_SCRIPT_RAN=1\n`, { flag: 'a' })
+  fs.writeFileSync(envPath, `\nSETUP_SCRIPT_RAN=1\n`, { flag: 'a' })
 }
 
 process.exit(result.status)

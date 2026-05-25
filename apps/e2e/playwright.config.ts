@@ -78,7 +78,7 @@ export default defineConfig({
   webServer: isRemote
     ? undefined
     : {
-        command: 'pnpm dev:frontend',
+        command: 'pnpm --filter @repo/web dev',
         url: 'http://localhost:3000',
         reuseExistingServer: !env.CI,
       },

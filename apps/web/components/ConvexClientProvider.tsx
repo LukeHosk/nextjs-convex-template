@@ -1,9 +1,9 @@
 'use client'
 
-import { env } from '@/env/next'
 import { ConvexAuthNextjsProvider } from '@convex-dev/auth/nextjs'
 import { ConvexReactClient } from 'convex/react'
 import { ReactNode } from 'react'
+import { env } from '@repo/env/next'
 
 const convex = new ConvexReactClient(env.NEXT_PUBLIC_CONVEX_URL!)
 

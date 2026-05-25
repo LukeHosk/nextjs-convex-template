@@ -1,0 +1,31 @@
+{
+  "name": "@repo/convex",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "dev": "convex dev",
+    "bootstrap": "convex dev --until-success && convex dev --once --run-sh \"node setup.mjs --once\"",
+    "build": "convex codegen",
+    "deploy:preview": "convex deploy",
+    "lint": "eslint . --ignore-pattern \"convex/_generated/**\"",
+    "seed:user": "npx convex run seed:seedTestUser",
+    "seed:all": "npx convex run seed:seedAll",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@convex-dev/auth": "^0.0.92",
+    "@repo/env": "workspace:*",
+    "convex": "^1.39.1",
+    "convex-helpers": "^0.1.118",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@convex-dev/eslint-plugin": "^2.0.0",
+    "@types/node": "^20",
+    "eslint": "^9",
+    "typescript": "^5"
+  }
+}

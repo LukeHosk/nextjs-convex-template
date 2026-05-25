@@ -3,11 +3,11 @@ import { z } from 'zod'
 
 export const seedEnv = createEnv({
   server: {
-    SEED_SECRET: z.string().optional(), //TODO: make required in CI
+    SEED_SECRET: z.string().optional(),
 
-    SEED_USER_EMAIL: z.email().optional().default('test@clothes-tool.test'),
+    SEED_USER_EMAIL: z.email().optional().default('test@example.test'),
     SEED_USER_PASSWORD: z.string().min(8).optional().default('TestPass123!'),
-    SEED_USER_2_EMAIL: z.email().optional().default('test2@clothes-tool.test'),
+    SEED_USER_2_EMAIL: z.email().optional().default('test2@example.test'),
     SEED_USER_2_PASSWORD: z.string().min(8).optional().default('TestPass123!'),
   },
   client: {},

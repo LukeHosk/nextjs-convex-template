@@ -19,16 +19,21 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./apps/web/*"],
+      "@repo/convex": ["./packages/convex/index.ts"],
+      "@repo/env": ["./packages/env/env/next.ts"],
+      "@repo/env/*": ["./packages/env/env/*"]
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "apps/**/*.ts",
+    "apps/**/*.tsx",
+    "apps/**/*.mts",
+    "apps/**/*.d.ts",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.mts",
+    "packages/**/*.d.ts"
   ],
-  "exclude": ["node_modules", "convex"]
+  "exclude": ["node_modules"]
 }

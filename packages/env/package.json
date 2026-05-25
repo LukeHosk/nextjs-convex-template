@@ -1,0 +1,28 @@
+{
+  "name": "@repo/env",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./automation": "./env/base/automation.ts",
+    "./base/automation": "./env/base/automation.ts",
+    "./base/convex-base": "./env/base/convex-base.ts",
+    "./base/seed": "./env/base/seed.ts",
+    "./github": "./env/github.ts",
+    "./next": "./env/next.ts",
+    "./seed": "./env/base/seed.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit --project tsconfig.json",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit --project tsconfig.json"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "^0.13.11",
+    "@t3-oss/env-nextjs": "^0.13.11",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}

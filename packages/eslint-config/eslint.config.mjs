@@ -1,0 +1,28 @@
+import { defineConfig } from 'eslint/config'
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals'
+import nextTypescript from 'eslint-config-next/typescript'
+import convexPlugin from '@convex-dev/eslint-plugin'
+
+export default defineConfig([
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  ...convexPlugin.configs.recommended,
+  {
+    ignores: [
+      'packages/env/**',
+      'packages/convex/convex/env.ts',
+      'packages/convex/convex/seedEnv.ts',
+      'packages/convex/scripts/**',
+    ],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'MemberExpression[object.name="process"][property.name="env"]',
+          message:
+            'Use env from @repo/env/next or packages/convex/convex/env.ts instead of process.env directly',
+        },
+      ],
+    },
+  },
+])

@@ -1,7 +1,7 @@
-import { api } from '@/convex/_generated/api'
-import { env } from '@/env/next'
 import { fetchAction } from 'convex/nextjs'
 import { type NextRequest } from 'next/server'
+import { api } from '@repo/convex'
+import { env } from '@repo/env/next'
 
 export const POST = async (request: NextRequest) => {
   console.log('[seed] POST /api/seed called')

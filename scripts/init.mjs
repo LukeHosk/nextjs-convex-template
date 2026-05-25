@@ -17,8 +17,8 @@ import process from 'node:process'
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const packageJsonPath = path.join(rootDir, 'package.json')
 const readmePath = path.join(rootDir, 'README.md')
-const layoutPath = path.join(rootDir, 'app', 'layout.tsx')
-const homePagePath = path.join(rootDir, 'app', 'page.tsx')
+const layoutPath = path.join(rootDir, 'apps', 'web', 'app', 'layout.tsx')
+const homePagePath = path.join(rootDir, 'apps', 'web', 'app', 'page.tsx')
 
 function toPackageName(value) {
   return value
@@ -104,7 +104,9 @@ async function main() {
     shouldRunDev = normalizedAnswer === '' || normalizedAnswer === 'y' || normalizedAnswer === 'yes'
 
     console.log(`\nUpdated project name to ${projectTitle}.`)
-    console.log('Updated package.json, app/layout.tsx, app/page.tsx, and README.md.')
+    console.log(
+      'Updated package.json, apps/web/app/layout.tsx, apps/web/app/page.tsx, and README.md.',
+    )
   } finally {
     rl.close()
   }

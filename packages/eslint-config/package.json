@@ -1,0 +1,10 @@
+{
+  "name": "@repo/eslint-config",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@convex-dev/eslint-plugin": "^2.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6"
+  }
+}

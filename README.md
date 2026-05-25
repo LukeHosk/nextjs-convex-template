@@ -65,10 +65,7 @@ Email/password auth via `@convex-dev/auth`. The middleware in `proxy.ts` gates a
 
 `convex/storage.ts` provides generic upload/retrieval/delete helpers backed by Convex native storage. The `uploadedImages` table tracks metadata.
 
-> **Planned branches** — future branches will provide drop-in alternative storage backends:
->
-> - `feature/s3-storage` — AWS S3 via presigned URLs
-> - `feature/cloudflare-r2` — Cloudflare R2 via Workers
+Alternative storage backends can be added later without changing the app structure.
 
 ## Seed data
 
