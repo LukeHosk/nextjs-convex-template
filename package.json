@@ -7,6 +7,7 @@
     "dev:frontend": "next dev",
     "dev:backend": "convex dev",
     "predev": "convex dev --until-success && convex dev --once --run-sh \"node setup.mjs --once\"",
+    "init-template": "node scripts/init.mjs",
     "build": "npm-run-all build:backend build:frontend",
     "build:frontend": "next build",
     "build:backend": "convex codegen",

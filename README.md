@@ -27,14 +27,19 @@ git clone https://github.com/lukehoskins/nextjs-convex-template
 cd nextjs-convex-template
 pnpm install
 
-# 2. Set up environment
+# 2. Initialise the template
+pnpm run init-template
+
+# 3. Set up environment
 cp .env.example .env.local
 # Fill in CONVEX_DEPLOYMENT, NEXT_PUBLIC_CONVEX_URL, NEXT_PUBLIC_CONVEX_SITE_URL
 # (these are printed after `npx convex dev` initialises your project)
 
-# 3. Start dev server (runs Next.js + Convex backend together)
+# 4. Start dev server (runs Next.js + Convex backend together)
 pnpm dev
 ```
+
+`pnpm run init-template` prompts for a project name, updates the starter branding in `package.json`, `app/layout.tsx`, `app/page.tsx`, and this README, and can launch `pnpm dev` for you to complete the initial Convex setup.
 
 On first run, `predev` will initialise the Convex project and run `setup.mjs` to configure the auth provider domain automatically.
 
