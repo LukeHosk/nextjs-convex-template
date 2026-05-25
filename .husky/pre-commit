@@ -1,0 +1,4 @@
+if [ -n "$CONVEX_DEPLOYMENT" ]; then
+  pnpm convex codegen
+fi
+pnpm exec lint-staged
