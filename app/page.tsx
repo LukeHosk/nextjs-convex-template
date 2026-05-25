@@ -121,7 +121,11 @@ export default function Home() {
                 <div className="ml-3 flex items-center gap-2">
                   {hasImageUrl(todo) ? (
                     <div className="flex items-center gap-2">
-                      <img src={todo.imageUrl} alt="attachment" className="h-12 w-12 rounded object-cover" />
+                      <img
+                        src={todo.imageUrl}
+                        alt="attachment"
+                        className="h-12 w-12 rounded object-cover"
+                      />
                       <button
                         type="button"
                         onClick={async () => {
@@ -135,7 +139,7 @@ export default function Home() {
                       </button>
                     </div>
                   ) : (
-                    <label className="text-sm text-muted-foreground hover:text-primary cursor-pointer">
+                    <label className="cursor-pointer text-sm text-muted-foreground hover:text-primary">
                       <input
                         type="file"
                         accept="image/*"

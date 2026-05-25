@@ -1,5 +1,12 @@
 import { defineConfig, devices } from '@playwright/test'
-import { env } from '@/env/next'
+
+// Avoid importing `@/env/next` here because it pulls ESM-only packages and
+// causes Playwright's CommonJS loader to fail. Read needed env vars directly.
+const env = {
+  PLAYWRIGHT_BASE_URL: process.env.PLAYWRIGHT_BASE_URL,
+  CI: process.env.CI,
+  VERCEL_AUTOMATION_BYPASS_SECRET: process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+}
 
 // When set, tests run against a deployed URL instead of a local dev server.
 const baseURL = env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000'

@@ -1,11 +1,12 @@
-import { env } from '@/env/next'
 import { test as setup, expect } from '@playwright/test'
 import path from 'path'
 
 const authFile = path.join(__dirname, '.auth/user.json')
 
-const SEED_EMAIL = env.SEED_USER_EMAIL ?? 'test@clothes-tool.test'
-const SEED_PASSWORD = env.SEED_USER_PASSWORD ?? 'TestPass123!'
+// Read seed credentials from environment since importing the project's env
+// helper pulls ESM-only packages which Playwright's loader can't require.
+const SEED_EMAIL = process.env.SEED_USER_EMAIL ?? 'test@example.test'
+const SEED_PASSWORD = process.env.SEED_USER_PASSWORD ?? 'TestPass123!'
 
 setup('authenticate as seed user', async ({ page }) => {
   await page.goto('/signin')

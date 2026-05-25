@@ -1,8 +1,7 @@
-import { env } from '@/env/next'
 import { test, expect } from '@playwright/test'
 
-const SEED_EMAIL = env.SEED_USER_EMAIL ?? 'test@clothes-tool.test'
-const SEED_PASSWORD = env.SEED_USER_PASSWORD ?? 'TestPass123!'
+const SEED_EMAIL = process.env.SEED_USER_EMAIL ?? 'test@example.test'
+const SEED_PASSWORD = process.env.SEED_USER_PASSWORD ?? 'TestPass123!'
 
 test('unauthenticated visit to / redirects to /signin', async ({ page }) => {
   await page.goto('/')
